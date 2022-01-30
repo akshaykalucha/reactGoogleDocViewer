@@ -145,3 +145,10 @@ return __webpack_require__(__webpack_require__.s = 1);
               );
             }
           }]);
+          return GoogleDocsViewer;
+        }(_react.Component);
+        
+        exports.default = GoogleDocsViewer;
+        
+ })
+ ]);
