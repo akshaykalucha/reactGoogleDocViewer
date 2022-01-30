@@ -118,3 +118,11 @@ return __webpack_require__(__webpack_require__.s = 1);
  })
      ]);
     
+     var GoogleDocsViewer = function (_Component) {
+        _inherits(GoogleDocsViewer, _Component);
+      
+        function GoogleDocsViewer() {
+          _classCallCheck(this, GoogleDocsViewer);
+      
+          return _possibleConstructorReturn(this, (GoogleDocsViewer.__proto__ || Object.getPrototypeOf(GoogleDocsViewer)).apply(this, arguments));
+        }
