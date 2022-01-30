@@ -126,3 +126,22 @@ return __webpack_require__(__webpack_require__.s = 1);
       
           return _possibleConstructorReturn(this, (GoogleDocsViewer.__proto__ || Object.getPrototypeOf(GoogleDocsViewer)).apply(this, arguments));
         }
+        _createClass(GoogleDocsViewer, [{
+            key: "render",
+            value: function render() {
+              var iframeSrc = "https://docs.google.com/viewer?url=" + this.props.fileUrl + "&embedded=true";
+        
+              var style = {
+                width: this.props.width,
+                height: this.props.height,
+                border: 'none'
+              };
+        
+              return _react2.default.createElement(
+                "div",
+                null,
+                _react2.default.createElement("iframe", { src: iframeSrc,
+                  style: style })
+              );
+            }
+          }]);
