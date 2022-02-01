@@ -3,18 +3,18 @@ import PropTypes from "prop-types";
 
 import usePlacesWidget from "./usePlacesWidget";
 
-// function ReactGoogleAutocomplete(props) {
-//   const {
-//     onPlaceSelected,
-//     apiKey,
-//     libraries,
-//     inputAutocompleteValue,
-//     options,
-//     googleMapsScriptBaseUrl,
-//     refProp,
-//     language,
-//     ...rest
-//   } = props;
+function ReactGoogleAutocomplete(props) {
+  const {
+    onPlaceSelected,
+    apiKey,
+    libraries,
+    inputAutocompleteValue,
+    options,
+    googleMapsScriptBaseUrl,
+    refProp,
+    language,
+    ...rest
+  } = props;
 
   const { ref } = usePlacesWidget({
     ref: refProp,
