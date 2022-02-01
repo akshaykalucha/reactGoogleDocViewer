@@ -55,6 +55,6 @@ ReactGoogleAutocomplete.propTypes = {
   language: PropTypes.string,
 };
 
-export default forwardRef((props, ref) => (
-  <ReactGoogleAutocomplete {...props} refProp={ref} />
-));
+// export default forwardRef((props, ref) => (
+//   <ReactGoogleAutocomplete {...props} refProp={ref} />
+// ));
