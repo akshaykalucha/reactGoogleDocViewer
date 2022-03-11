@@ -18,3 +18,47 @@ const isLocalhost = Boolean(
         // serve assets; see https://github.com/facebook/create-react-app/issues/2374
         return;
       }
+
+      window.addEventListener('load', () => {
+        const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+  
+        if (isLocalhost) {
+          // This is running on localhost. Let's check if a service worker still exists or not.
+          checkValidServiceWorker(swUrl, config);
+  
+          // Add some additional logging to localhost, pointing developers to the
+          // service worker/PWA documentation.
+          navigator.serviceWorker.ready.then(() => {
+            console.log(
+              'This web app is being served cache-first by a service ' +
+                'worker. To learn more, visit https://bit.ly/CRA-PWA'
+            );
+          });
+        } else {
+          // Is not localhost. Just register service worker
+          registerValidSW(swUrl, config);
+        }
+      });
+    }
+  }
+
+  function registerValidSW(swUrl, config) {
+    navigator.serviceWorker
+      .register(swUrl)
+      .then(registration => {
+        registration.onupdatefound = () => {
+          const installingWorker = registration.installing;
+          if (installingWorker == null) {
+            return;
+          }
+          installingWorker.onstatechange = () => {
+            if (installingWorker.state === 'installed') {
+              if (navigator.serviceWorker.controller) {
+                // At this point, the updated precached content has been fetched,
+                // but the previous service worker will still serve the older
+                // content until all client tabs are closed.
+                console.log(
+                  'New content is available and will be used when all ' +
+                    'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
+                );
+  
