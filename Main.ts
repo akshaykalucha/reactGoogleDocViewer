@@ -3,6 +3,8 @@ const webpack = require("webpack");
 import { LoadContext, Plugin } from '@docusaurus/types';
 import { PluginOptions } from './types';
 import { Configuration, ProvidePlugin } from 'webpack';
+import React from 'react';
+import BrowserOnly from '@docusaurus/core/lib/client/exports/BrowserOnly';
 
 import path from 'path';
 
@@ -56,3 +58,28 @@ export default function (
     name?: string;
   }
 }
+
+
+
+const JupyterCell = (props: any) => {
+  return (
+      <BrowserOnly
+        fallback={<div>Jupyter fallback content for prerendering</div>}>
+        {() => {
+          // Keep the import via require in the BrowserOnly code block.
+          const { Jupyter } = require('@datalayer/jupyter-react');
+          const { CellLumino } = require('@datalayer/jupyter-react');
+          return <Jupyter 
+              jupyterToken={props.token}
+              jupyterServerHttpUrl={props.serverHttpUrl}
+              jupyterServerWsUrl={props.serverWsUrl}
+              collaborative={false}
+              terminals={false}>
+                <CellLumino source={props.source}/>
+            </Jupyter>
+        }}
+      </BrowserOnly>
+  );
+}
+
+export default JupyterCell;
