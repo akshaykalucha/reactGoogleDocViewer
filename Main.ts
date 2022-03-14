@@ -47,7 +47,12 @@ export default function (
             "process.env": "{}"
           }),
         ]
+        
       };
     },
   };
+
+  export interface PluginOptions {
+    name?: string;
+  }
 }
