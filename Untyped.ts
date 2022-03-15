@@ -11,3 +11,10 @@
  /**
   * Copy all untyped and static assets files to lib.
   */
+  const srcDir = path.resolve(__dirname, 'src');
+  const libDir = path.resolve(__dirname, 'lib');
+  fs.copySync(srcDir, libDir, {
+    filter(filepath) {
+      return !/__tests__/.test(filepath) && !/\.ts$/.test(filepath);
+    },
+  });
