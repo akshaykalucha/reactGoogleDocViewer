@@ -46,3 +46,12 @@ function replaceRenderer({
       }
       return false
     })
+
+    const expoJsLoader = jsLoaders[jsLoaders.length - 1]
+
+    // console.log("expoJsLoader",JSON.stringify(expoJsLoader,null,2));
+    return expoJsLoader
+  }
+  
+  const customizeExpoJsLoader = config => {
+    const expoJsLoaderRule = getExpoJsLoaderRule(config)
