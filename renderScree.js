@@ -92,3 +92,7 @@ function onCreateWebpackConfig({ actions, getConfig }) {
   
     actions.replaceWebpackConfig(config)
   }
+
+exports.resolvableExtensions = resolvableExtensions
+exports.onCreateBabelConfig = onCreateBabelConfig
+exports.onCreateWebpackConfig = onCreateWebpackConfig
