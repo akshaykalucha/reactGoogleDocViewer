@@ -20,3 +20,29 @@ function replaceRenderer({
   }
   
   exports.replaceRenderer = replaceRenderer
+
+
+  const getExpoJsLoaderRule = config => {
+    const {
+      conditionMatchesFile,
+    } = require('@expo/webpack-config/utils')
+    const { resolve, join } = require('path')
+  
+    const rules = config.module.rules
+  
+    // TODO bad way to find js loaders...
+    const jsLoaders = rules.filter(rule => {
+      if (rule.test) {
+        const relativeFoldersToTry = [
+          '../..',
+          '../../.docz', // Needed for Docz, as it has a nested structure
+        ]
+        return relativeFoldersToTry.some(relativeFolder =>
+          conditionMatchesFile(
+            rule,
+            resolve(join(__dirname, relativeFolder, 'foo.js'))
+          )
+        )
+      }
+      return false
+    })
