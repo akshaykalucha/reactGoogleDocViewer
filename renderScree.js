@@ -66,4 +66,13 @@ function replaceRenderer({
   ])
 
   return config
+
+  const resolvableExtensions = () => getModuleFileExtensions('web')
+
+function onCreateBabelConfig({ actions }, options) {
+  actions.setBabelPreset({
+    name: require.resolve(`babel-preset-expo`),
+    options,
+  })
+}
 }
