@@ -75,4 +75,20 @@ function onCreateBabelConfig({ actions }, options) {
     options,
   })
 }
-}
+
+function onCreateWebpackConfig({ actions, getConfig }) {
+    const gatsbyConfig = getConfig()
+    if (!gatsbyConfig.context) {
+      throw new Error('Expected Gatsby config to provide the root context')
+    }
+  
+    let config
+    try {
+      config = customizeExpoJsLoader(withUnimodules(gatsbyConfig))
+    } catch (error) {
+      console.error(error)
+      process.exit(1)
+    }
+  
+    actions.replaceWebpackConfig(config)
+  }
