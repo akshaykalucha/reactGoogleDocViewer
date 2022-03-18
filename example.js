@@ -10,11 +10,3 @@ export const wrapRootElement = ({ element }) => {
     </ApplicationProvider>
   )
 }
-
-export const wrapRootElement = ({ element }) => {
-    return (
-      <ApplicationProvider mapping={mapping} theme={lightTheme}>
-        <PaperProvider>{element}</PaperProvider>
-      </ApplicationProvider>
-    )
-  }
